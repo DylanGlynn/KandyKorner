@@ -1,0 +1,255 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Daniel Robitaille",
+      "email": "daniel@candyman.org",
+      "isStaff": true
+    },
+    {
+      "email": "theman@icecream.gov",
+      "fullName": "Gregory Tudor",
+      "isStaff": false,
+      "id": 2
+    }
+  ],
+  "customers": [
+    {}
+  ],
+  "employees": [
+    {}
+  ],
+  "locations": [
+    {
+      "id": 1,
+      "name": "Kandy Korner @ Opry Mills",
+      "address": "122 Opry Mills Dr, Nashville, TN 37214",
+      "phoneNumber": "(615) 880-8319",
+      "squareFootage": 1200
+    },
+    {
+      "id": 2,
+      "name": "Downtown Kandy Korner",
+      "address": "310 Broadway, Nashville, TN 37201",
+      "phoneNumber": "(615) 313-9919",
+      "squareFootage": 1400
+    },
+    {
+      "id": 3,
+      "name": "Kandy Korner BNA",
+      "address": "1830 Air Lane Drive, Suite 7, Nashville, TN 37210",
+      "phoneNumber": "(615) 232-2410",
+      "squareFootage": 2700
+    },
+    {
+      "id": 4,
+      "name": "Kandy Korner @ Watkins Park",
+      "address": "1300 Clinton St Ste 127, Nashville, TN 37203",
+      "phoneNumber": "(615) 953-1065",
+      "squareFootage": 900
+    },
+    {
+      "id": 5,
+      "name": "Kandy Korner of Franklin",
+      "address": "1800 Galleria Blvd, Franklin, TN 37067",
+      "phoneNumber": "(615) 771-1040",
+      "squareFootage": 1300
+    },
+    {
+      "id": 6,
+      "name": "Kandy Korner of Donelson",
+      "address": "2525 Mcgavock Pike, Nashville, Tn 37214",
+      "phoneNumber": "(615) 871-9294",
+      "squareFootage": 1200
+    },
+    {
+      "id": 7,
+      "name": "Kandy Korner of Bellevue",
+      "address": "8127 Sawyer Brown Rd Ste 308, Nashville, TN 37221",
+      "phoneNumber": "(615) 298-9893",
+      "squareFootage": 1150
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "name": "Gummy Worms",
+      "productTypeId": 2,
+      "price": 1.59
+    },
+    {
+      "id": 2,
+      "name": "Jolly Rancher",
+      "productTypeId": 1,
+      "price": 3.99
+    },
+    {
+      "id": 3,
+      "name": "Cotton Candy",
+      "productTypeId": 2,
+      "price": 1.99
+    },
+    {
+      "id": 4,
+      "name": "Kit Kat",
+      "productTypeId": 3,
+      "price": 1.99
+    },
+    {
+      "id": 5,
+      "name": "Kit Kat King-Sized",
+      "productTypeId": 3,
+      "price": 3.59
+    },
+    {
+      "id": 6,
+      "name": "Kit Kat (White Chocolate)",
+      "productTypeId": 5,
+      "price": 1.99
+    },
+    {
+      "id": 7,
+      "name": "Reese's Pieces",
+      "productTypeId": 3,
+      "price": 1.99
+    },
+    {
+      "id": 8,
+      "name": "Reese's Cups",
+      "productTypeId": 3,
+      "price": 1.99
+    },
+    {
+      "id": 9,
+      "name": "Reese's Cups King-Sized",
+      "productTypeId": 3,
+      "price": 3.59
+    },
+    {
+      "id": 10,
+      "name": "Reese's Big Cup",
+      "productTypeId": 3,
+      "price": 1.99
+    },
+    {
+      "id": 11,
+      "name": "Reese's Big Cup King-Sized",
+      "productTypeId": 3,
+      "price": 3.59
+    },
+    {
+      "id": 12,
+      "name": "Reese's Cups (White Chocolate)",
+      "productTypeId": 5,
+      "price": 1.99
+    },
+    {
+      "id": 13,
+      "name": "Coca-Cola",
+      "productTypeId": 6,
+      "price": 2.99
+    },
+    {
+      "id": 14,
+      "name": "Pepsi",
+      "productTypeId": 6,
+      "price": 2.99
+    },
+    {
+      "id": 15,
+      "name": "RC Cola",
+      "productTypeId": 6,
+      "price": 2.99
+    },
+    {
+      "id": 16,
+      "name": "Reed's Ginger Beer",
+      "productTypeId": 6,
+      "price": 2.99
+    },
+    {
+      "id": 17,
+      "name": "Sprecher Root Beer",
+      "productTypeId": 6,
+      "price": 2.99
+    },
+    {
+      "id": 18,
+      "name": "Chocolate-covered Almonds",
+      "productTypeId": 3,
+      "price": 3.99
+    },
+    {
+      "id": 19,
+      "name": "Dark Chocolate-covered Almonds",
+      "productTypeId": 4,
+      "price": 4.99
+    },
+    {
+      "id": 20,
+      "name": "Caramel Chews",
+      "productTypeId": 2,
+      "price": 1.99
+    },
+    {
+      "id": 21,
+      "name": "Gummy Bears",
+      "productTypeId": 2,
+      "price": 1.59
+    },
+    {
+      "id": 22,
+      "name": "Lollipop",
+      "productTypeId": 1,
+      "price": 2.5
+    },
+    {
+      "name": "Test",
+      "price": 5.99,
+      "productTypeId": 8,
+      "id": 23
+    }
+  ],
+  "productTypes": [
+    {
+      "id": 1,
+      "name": "Hard Candy"
+    },
+    {
+      "id": 2,
+      "name": "Soft Candy"
+    },
+    {
+      "id": 3,
+      "name": "Milk Chocolate"
+    },
+    {
+      "id": 4,
+      "name": "Dark Chocolate"
+    },
+    {
+      "id": 5,
+      "name": "White Chocolate"
+    },
+    {
+      "id": 6,
+      "name": "Sodas"
+    },
+    {
+      "id": 7,
+      "name": "Ice Cream"
+    },
+    {
+      "id": 8,
+      "name": "Gum"
+    },
+    {
+      "id": 9,
+      "name": "Jelly Beans"
+    }
+  ],
+  "inventories": [
+    {}
+  ],
+  "purchases": []
+}

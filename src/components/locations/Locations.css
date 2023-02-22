@@ -1,0 +1,15 @@
+.locations {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-self: left;
+    scroll-behavior: smooth;
+}
+
+.location {
+    display: grid;
+    justify-self: left;
+    margin-bottom: 5px;
+    padding: 10px;
+    background-color: rgba(50,50,50,.075)
+}
