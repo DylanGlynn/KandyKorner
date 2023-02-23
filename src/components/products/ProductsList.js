@@ -13,7 +13,7 @@ export const ProductsList = () => {
 
     useEffect(
         () => {
-            fetch(`http://localhost:8088/products?_expand=productType&?_sort=product.name&_order=asc`)
+            fetch(`http://localhost:8088/products?_expand=productType`)
                 .then(response => response.json())
                 .then((productsArray) => {
                     setProducts(productsArray)
@@ -24,7 +24,6 @@ export const ProductsList = () => {
 
     useEffect(
         () => {
-            if (kandyUserObject.staff) {
             const productListAlphabetical = products.filter(product => product.name)
             const productListSortAlphabetical = productListAlphabetical.sort(function (a ,b) {
                 if (a.name < b.name) {
@@ -35,10 +34,7 @@ export const ProductsList = () => {
                 }
             })
                 setFiltered(productListSortAlphabetical)
-            } else {
-                setFiltered(products)
-            }
-        },
+            },
         [products]
     )
 

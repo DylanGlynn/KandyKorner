@@ -1,11 +1,9 @@
 import { Link, useNavigate } from "react-router-dom"
 import "./NavBar.css"
 
-const localKandyuser = localStorage.getItem("kandy_user")
-const kandyUserObject = JSON.parse(localKandyuser)
-
-
 export const NavBar = () => {
+    let localKandyuser = localStorage.getItem("kandy_user")
+    const kandyUserObject = JSON.parse(localKandyuser)
     const navigate = useNavigate()
 
     return (
@@ -16,9 +14,11 @@ export const NavBar = () => {
             <li className="navbar__item active">
                 <Link className="navbar__link" to="/products">Products</Link>
             </li>
+            { kandyUserObject.staff ? 
             <li className="navbar__item active">
                 <Link className="navbar__link" to="/newproductform">Add New Product</Link>
-            </li>
+            </li> : ""
+            }
             {
                 <li className="navbar__item navbar__logout">
                     <Link className="navbar__link" to="" onClick={() => {
@@ -30,4 +30,3 @@ export const NavBar = () => {
         </ul>
     )
 }
-

@@ -20,7 +20,7 @@ body {
     background-image: url("https://www.snopes.com/tachyon/2019/10/GettyImages-688976229-e1570645855298.jpg");
     background-color: rgba(200, 225, 220, 1);
     background-blend-mode: screen;
-    background-size: fixed;
+    background-size: 165%;
     background-position-x: center;
 }
 
@@ -43,6 +43,7 @@ p {
   font-family: 'Playfair Display';
   font-weight: 700;
   margin: 0px;
+  font-size: 115%;
 }
 
 a {

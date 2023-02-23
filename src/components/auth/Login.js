@@ -19,7 +19,6 @@ export const Login = () => {
                         id: user.id,
                         staff: user.isStaff
                     }))
-
                     navigate("/")
                 }
                 else {

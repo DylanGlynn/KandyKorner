@@ -202,11 +202,10 @@
       "name": "Lollipop",
       "productTypeId": 1,
       "price": 2.5
-    },
-    {
-      "name": "Test",
-      "price": 5.99,
-      "productTypeId": 8,
+    },{
+      "name": "Bryers French Vanilla",
+      "price": 2.59,
+      "productTypeId": 7,
       "id": 23
     }
   ],

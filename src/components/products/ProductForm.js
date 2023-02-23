@@ -1,8 +1,8 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 
 export const ProductForm = () => {
-
+    const [productTypes, setProductTypes] = useState([])
     const [newProduct, createProduct] = useState({
         name: "",
         price: "",
@@ -12,6 +12,17 @@ export const ProductForm = () => {
     const navigate = useNavigate()
     const localKandyUser = localStorage.getItem("kandu_user")
     const kandyUserObject = JSON.parse(localKandyUser)
+
+    useEffect(
+        () => {
+            fetch(`http://localhost:8088/productTypes`)
+                .then(res => res.json())
+                .then(foundTypes => {
+                    setProductTypes(foundTypes)
+                })
+        },
+        [productTypes]
+    )
 
     const handleSaveButtonClick = (event) => {
         event.preventDefault()
@@ -67,22 +78,27 @@ export const ProductForm = () => {
                             const copy = { ...newProduct }
                             copy.price = eve.target.value
                             createProduct(copy)
-                        }} />
+                        }}
+                        required />
                 </div>
             </fieldset>
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="productTypeId">Product Type:</label>
-                    <input
-                        type="text"
+                    <select
                         className="form-control"
-                        placeholder="Need dropdown"
                         value={newProduct.productTypeId}
                         onChange={(eve) => {
                             const copy = { ...newProduct }
                             copy.productTypeId = eve.target.value
                             createProduct(copy)
-                        }} />
+
+                        }}>
+                            <option value="">Select product type...</option>
+                            {productTypes.map(type => (
+                                <option value={type.id}>{type.name}</option>
+                            ))}
+                    </select>
                 </div>
             </fieldset>
             <button
