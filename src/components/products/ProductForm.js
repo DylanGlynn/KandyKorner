@@ -96,7 +96,7 @@ export const ProductForm = () => {
                         }}>
                             <option value="">Select product type...</option>
                             {productTypes.map(type => (
-                                <option value={type.id}>{type.name}</option>
+                                <option value={type.id} key={type.id}>{type.name}</option>
                             ))}
                     </select>
                 </div>

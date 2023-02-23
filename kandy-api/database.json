@@ -202,11 +202,18 @@
       "name": "Lollipop",
       "productTypeId": 1,
       "price": 2.5
-    },{
+    },
+    {
       "name": "Bryers French Vanilla",
       "price": 2.59,
       "productTypeId": 7,
       "id": 23
+    },
+    {
+      "name": "Sugar Babies",
+      "price": 2.99,
+      "productTypeId": 2,
+      "id": 24
     }
   ],
   "productTypes": [
@@ -248,7 +255,19 @@
     }
   ],
   "inventories": [
-    {}
+    {
+      "id": 1,
+      "productId": 1,
+      "productTypeId": 2,
+      "locationId": 2,
+      "quantity": 30
+    },    {
+      "id": 1,
+      "productId": 1,
+      "productTypeId": 2,
+      "locationId": 4,
+      "quantity": 15
+    }
   ],
   "purchases": []
 }

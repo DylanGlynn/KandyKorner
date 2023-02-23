@@ -17,3 +17,7 @@
 button {
     margin: 0 0 5px 0px;
 }
+
+.product__searchBar {
+    width: 300px;
+}

@@ -2,14 +2,24 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Products.css"
 
-export const ProductsList = () => {
+export const ProductsList = ({ searchTermState }) => {
     const [products, setProducts] = useState([])
     const [filteredProducts, setFiltered] = useState([])
-    const [filteredProductsByPrice, productsFilteredbyPrice] = useState(false)
+    const [filteredProductsByPrice, productsFilteredByPrice] = useState(false)
+//    const [filteredProductsBySearch, setFilteredBySearch] = useState(false)
     const navigate = useNavigate()
 
     const localKandyuser = localStorage.getItem("kandy_user")
     const kandyUserObject = JSON.parse(localKandyuser)
+
+    useEffect(
+        () => {
+            const searchedProducts = products.filter(product => (
+                product.name.toLowerCase().startsWith(searchTermState.toLowerCase())))
+            setFiltered(searchedProducts)
+        },
+        [searchTermState]
+    )
 
     useEffect(
         () => {
@@ -25,7 +35,7 @@ export const ProductsList = () => {
     useEffect(
         () => {
             const productListAlphabetical = products.filter(product => product.name)
-            const productListSortAlphabetical = productListAlphabetical.sort(function (a ,b) {
+            const productListSortAlphabetical = productListAlphabetical.sort(function (a, b) {
                 if (a.name < b.name) {
                     return -1
                 }
@@ -33,8 +43,8 @@ export const ProductsList = () => {
                     return 1
                 }
             })
-                setFiltered(productListSortAlphabetical)
-            },
+            setFiltered(productListSortAlphabetical)
+        },
         [products]
     )
 
@@ -64,24 +74,26 @@ export const ProductsList = () => {
         {
             kandyUserObject.staff
                 ? <>
-                    <button onClick={() => productsFilteredbyPrice(true)}>Top Priced</button>
-                    <button onClick={() => productsFilteredbyPrice(false)}>Show All</button>
+                    <button onClick={() => productsFilteredByPrice(true)}>Top Priced</button>
+                    <button onClick={() => productsFilteredByPrice(false)}>Show All</button>
                 </>
                 : ""
         }
 
-
         <article className="products">
             {
                 filteredProducts.map(
-                    (product) => {
-                        return <section className="product" key={product.id} >
+                    (product) => (
+                        <section className="product" key={product.id} >
                             <header><b>{product.name}</b></header>
                             <article>Now only ${product.price}!</article>
-                            <footer>In the {product.productType.name} family.</footer>
+                            {searchTermState
+                                ? ""
+                                : <footer>In the {product.productType.name} family.</footer>
+                            }
                         </section>
-                    }
-                )
+                    )
+                ).sort()
             }
         </article>
     </>

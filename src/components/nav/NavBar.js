@@ -14,10 +14,12 @@ export const NavBar = () => {
             <li className="navbar__item active">
                 <Link className="navbar__link" to="/products">Products</Link>
             </li>
-            { kandyUserObject.staff ? 
-            <li className="navbar__item active">
-                <Link className="navbar__link" to="/newproductform">Add New Product</Link>
-            </li> : ""
+            {kandyUserObject.staff
+                ?
+                <li className="navbar__item active">
+                    <Link className="navbar__link" to="/newproductform">Add New Product</Link>
+                </li>
+                : ""
             }
             {
                 <li className="navbar__item navbar__logout">
