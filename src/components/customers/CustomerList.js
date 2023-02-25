@@ -17,7 +17,7 @@ export const CustomerList = () => {
     )
 
     return <>
-    <h2 className="employees__title">Employees</h2>
+    <h2 className="customers__title">Customers</h2>
     <article className="customers">
         {
             customers.map(customer => <Customer

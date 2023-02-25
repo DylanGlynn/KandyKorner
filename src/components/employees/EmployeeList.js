@@ -22,8 +22,8 @@ export const EmployeeList = () => {
             {
                 employees.map(employee => <Employee
                     key={`employee--${employee.id}`}
-                    id={employee.id}
-                    name={employee?.user?.fullName}
+                    id={employee?.user?.id}
+                    fullName={employee?.user?.fullName}
                     email={employee?.user?.email}
                     payRate={employee.payRate}
                     locationName={employee?.location?.name} />

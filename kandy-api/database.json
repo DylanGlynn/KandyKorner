@@ -38,7 +38,7 @@
     },
     {
       "payRate": 12.30,
-      "locationId": "1",
+      "locationId": 1,
       "startDate": "Fri Feb 24 2023 13:59:12 GMT-0600 (Central Standard Time)",
       "userId": 3,
       "id": 2

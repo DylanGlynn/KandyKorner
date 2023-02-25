@@ -43,7 +43,7 @@ export const EmployeeForm = () => {
             userId: users.length + 1,
             startDate: applicant.startDate,
             payRate: parseFloat(applicant.payRate),
-            locationId: applicant.location
+            locationId: parseInt(applicant.location)
         }
 
         return fetch(`http://localhost:8088/employees`, {
