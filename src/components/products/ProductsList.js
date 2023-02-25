@@ -23,7 +23,7 @@ export const ProductsList = ({ searchTermState }) => {
 
     useEffect(
         () => {
-            fetch(`http://localhost:8088/products?_expand=productType`)
+            fetch(`http://localhost:8088/products?_sort=name&_expand=productType`)
                 .then(response => response.json())
                 .then((productsArray) => {
                     setProducts(productsArray)
@@ -84,7 +84,7 @@ export const ProductsList = ({ searchTermState }) => {
             {
                 filteredProducts.map(
                     (product) => (
-                        <section className="product" key={product.id} >
+                        <section className="product" key={`product--${product.id}`} >
                             <header><b>{product.name}</b></header>
                             <article>Now only ${product.price}!</article>
                             {searchTermState

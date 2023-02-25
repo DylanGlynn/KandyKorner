@@ -45,10 +45,3 @@ p {
   margin: 0px;
   font-size: 115%;
 }
-
-a {
-  color: #404040;
-  text-decoration: none;
-  background-color: rgba(250, 234, 214, .5);
-  padding: 2px 5px;
-}

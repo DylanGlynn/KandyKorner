@@ -2,7 +2,7 @@
   "users": [
     {
       "id": 1,
-      "name": "Daniel Robitaille",
+      "fullName": "Daniel Robitaille",
       "email": "daniel@candyman.org",
       "isStaff": true
     },
@@ -11,13 +11,38 @@
       "fullName": "Gregory Tudor",
       "isStaff": false,
       "id": 2
+    },
+    {
+      "fullName": "George Constanza",
+      "email": "pretzels@thirsty.com",
+      "isStaff": true,
+      "id": 3
     }
   ],
   "customers": [
-    {}
+    {
+      "id": 1,
+      "userId": 2,
+      "address": "10B Dirt Rd., Nashville, TN 37210",
+      "phoneNumber": "(615) 421-9333",
+      "loyaltyNumber": 1001
+    }
   ],
   "employees": [
-    {}
+    {
+      "id": 1,
+      "userId": 1,
+      "startDate": "12/20/1984",
+      "payRate": 26.1,
+      "locationId": 6
+    },
+    {
+      "payRate": 12.30,
+      "locationId": "1",
+      "startDate": "Fri Feb 24 2023 13:59:12 GMT-0600 (Central Standard Time)",
+      "userId": 3,
+      "id": 2
+    }
   ],
   "locations": [
     {
@@ -261,7 +286,8 @@
       "productTypeId": 2,
       "locationId": 2,
       "quantity": 30
-    },    {
+    },
+    {
       "id": 1,
       "productId": 1,
       "productTypeId": 2,

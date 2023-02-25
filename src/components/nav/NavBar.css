@@ -13,7 +13,9 @@
     list-style-type: none;
 }
 
-.navbar__logout {
-    margin-left: auto;
-}
-
+.navbar__link {
+    color: #404040;
+    text-decoration: none;
+    background-color: rgba(250, 234, 214, .5);
+    padding: 2px 5px;
+  }

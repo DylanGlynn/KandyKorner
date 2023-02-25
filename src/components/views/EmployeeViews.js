@@ -2,6 +2,10 @@ import { Outlet, Route, Routes } from "react-router-dom"
 import { LocationsList } from "../locations/LocationsList.js"
 import { ProductsList } from "../products/ProductsList.js"
 import { ProductForm } from "../products/ProductForm.js"
+import { EmployeeForm } from "../employees/EmployeeForm.js"
+import { EmployeeList } from "../employees/EmployeeList.js"
+import { CustomerList } from "../customers/CustomerList.js"
+import { CustomerDetails } from "../customers/CustomerDetails.js"
 
 export const EmployeeViews = () => {
 	return (
@@ -18,6 +22,10 @@ export const EmployeeViews = () => {
 				<Route path="locations" element={ <LocationsList /> } />
 				<Route path="products" element={ <ProductsList /> } />
 				<Route path="newproductform" element= { <ProductForm />} />
+				<Route path="employeeform" element= { <EmployeeForm />} />
+				<Route path="employees" element= { <EmployeeList />} />
+				<Route path="customers" element= { <CustomerList />} />
+				<Route path="customers/:customerId" element= { <CustomerDetails />} />
 			</Route>
 		</Routes>
 	)

@@ -1,0 +1,21 @@
+.customers {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-self: left;
+    scroll-behavior: smooth;
+}
+
+.customer {
+    display: grid;
+    justify-self: left;
+    margin-bottom: 5px;
+    padding: 10px;
+    background-color: rgba(50,50,50,.075)
+}
+
+.customer__link {
+    color: #404040;
+    text-decoration: none;
+    font-weight:700
+  }
