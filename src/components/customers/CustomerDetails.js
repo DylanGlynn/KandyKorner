@@ -5,6 +5,19 @@ export const CustomerDetails = () => {
     const { customerId } = useParams()
     const [customer, updateCustomer] = useState([])
 
+    const [loyalty, updateLoyalty] = useState({
+        loyaltyNumber: ""
+    })
+
+    const [feedback, setFeedback] = useState("")
+
+    useEffect(() => {
+        if (feedback !== "") {
+            // Clear feedback to make entire element disappear after 3 seconds
+            setTimeout(() => setFeedback(""), 3000);
+        }
+    }, [feedback])
+
     useEffect(
         () => {
             fetch(`http://localhost:8088/customers?_expand=user&userId=${customerId}`)
@@ -17,9 +30,50 @@ export const CustomerDetails = () => {
         [customerId]
     )
 
-    return <section className="customer">
-        <header className="customer__header">Name: {customer?.user?.fullName}</header>
-        <div>Email: {customer?.user?.email}</div>
-        <div>Loyalty Number: {customer?.loyaltyNumber}</div>
-    </section>
+    const handleSaveButtonClick = (event) => {
+        event.preventDefault()
+
+        return fetch(`http://localhost:8088/customers/${customer.id}`, {
+            method: "PATCH",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(loyalty)
+        })
+            .then(response => response.json)
+            .then(() => {
+                setFeedback("Customer Loyalty Number successfully saved")
+            })
+    }
+
+    return (
+        <form className="customer">
+            <header className="customer__header">Name: {customer.user?.fullName}</header>
+            <div>Email: {customer?.user?.email}</div>
+            <article className="loyalty__update">
+                <fieldset>
+                    <div className="form-group">
+                        <label htmlFor="loyaltyNumber">Loyalty Number:</label>
+                        <input
+                            required
+                            type="text"
+                            className="form-control"
+                            placeholder={customer.loyaltyNumber}
+                            value={loyalty.loyaltyNumber}
+                            onChange={
+                                (evt) => {
+                                    const copy = { ...loyalty }
+                                    copy.loyaltyNumber = parseInt(evt.target.value)
+                                    updateLoyalty(copy)
+                                }
+                            } />
+                    </div>
+                </fieldset>
+                <button onClick={(clickEvent) => handleSaveButtonClick(clickEvent)}
+                    className="btn btn-primary btn-loyalty">Update</button>
+            <div className={`${feedback.includes("Error") ? "error" : "feedback"} 
+            ${feedback === "" ? "invisible" : "visible"}`}>
+                {feedback}
+            </div>
+                </article>
+        </form>
+    )
 }

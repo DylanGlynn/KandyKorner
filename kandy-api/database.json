@@ -17,6 +17,12 @@
       "email": "pretzels@thirsty.com",
       "isStaff": true,
       "id": 3
+    },
+    {
+      "fullName": "Marnie Stern",
+      "email": "guitarisfun@stern.com",
+      "isStaff": false,
+      "id": 4
     }
   ],
   "customers": [
@@ -26,6 +32,13 @@
       "address": "10B Dirt Rd., Nashville, TN 37210",
       "phoneNumber": "(615) 421-9333",
       "loyaltyNumber": 1001
+    },
+    {
+      "id": 2,
+      "userId": 4,
+      "address": "1006 Gillock St.",
+      "phoneNumber": "(615) 484-827",
+      "loyaltyNumber": 5150
     }
   ],
   "employees": [
@@ -37,7 +50,7 @@
       "locationId": 6
     },
     {
-      "payRate": 12.30,
+      "payRate": 12.3,
       "locationId": 1,
       "startDate": "Fri Feb 24 2023 13:59:12 GMT-0600 (Central Standard Time)",
       "userId": 3,

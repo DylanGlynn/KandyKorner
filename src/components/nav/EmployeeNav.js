@@ -2,8 +2,6 @@ import { Link, useNavigate } from "react-router-dom"
 import "./NavBar.css"
 
 export const EmployeeNav = () => {
-    let localKandyuser = localStorage.getItem("kandy_user")
-    const kandyUserObject = JSON.parse(localKandyuser)
     const navigate = useNavigate()
 
     return (

@@ -30,3 +30,15 @@
     font-weight: 700;
     line-height: 3rem;
 }
+
+.loyalty__update {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-right: 60%;
+}
+
+.btn-loyalty {
+    height: min-content;
+    margin: 9% 0 ;
+}
