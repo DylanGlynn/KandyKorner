@@ -33,12 +33,12 @@
 
 .loyalty__update {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
+    align-items: baseline;
     margin-right: 60%;
 }
 
 .btn-loyalty {
     height: min-content;
-    margin: 9% 0 ;
 }

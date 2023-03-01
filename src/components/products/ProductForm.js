@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
+import { Fetch, Method } from "../ApiManager"
 
 export const ProductForm = () => {
     const [productTypes, setProductTypes] = useState([])
@@ -10,13 +11,10 @@ export const ProductForm = () => {
     })
 
     const navigate = useNavigate()
-    const localKandyUser = localStorage.getItem("kandu_user")
-    const kandyUserObject = JSON.parse(localKandyUser)
 
     useEffect(
         () => {
-            fetch(`http://localhost:8088/productTypes`)
-                .then(res => res.json())
+            Fetch("productTypes", "")
                 .then(foundTypes => {
                     setProductTypes(foundTypes)
                 })
@@ -33,17 +31,8 @@ export const ProductForm = () => {
             productTypeId: parseInt(newProduct.productTypeId)
         }
 
-        return fetch(`http://localhost:8088/products`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(productToSendToAPI)
-        })
-            .then(response => response.json())
-            .then(() => {
-                navigate("/products")
-            })
+        return Fetch("products", "", Method("POST", productToSendToAPI))
+            .then(() => { navigate("/products") })
     }
 
     return (

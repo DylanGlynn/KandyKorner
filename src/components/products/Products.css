@@ -21,3 +21,31 @@ button {
 .product__searchBar {
     width: 300px;
 }
+
+.product__details {
+    display: flex;
+}
+
+.purchase__button {
+    padding: 15px;
+    background-color: rgba(50,50,50,.075);
+    min-height: 94%;
+    background-color: rgba(0, 255, 255, 0.35);
+    vertical-align: bottom;
+}
+
+.purchases {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    align-self: left;
+    scroll-behavior: smooth;
+}
+
+.purchase {
+    display: grid;
+    justify-self: left;
+    margin-bottom: 5px;
+    padding: 10px;
+    background-color: rgba(50,50,50,.075)
+}

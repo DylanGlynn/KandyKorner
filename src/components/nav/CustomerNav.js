@@ -14,6 +14,9 @@ export const CustomerNav = () => {
             <li className="navbar__item active">
                 <Link className="navbar__link" to="/products">Products</Link>
             </li>
+            <li className="navbar__item active">
+                <Link className="navbar__link" to="/orders">My Orders</Link>
+            </li>
             {
                 <li className="navbar__item navbar__logout">
                     <Link className="navbar__link" to="" onClick={() => {

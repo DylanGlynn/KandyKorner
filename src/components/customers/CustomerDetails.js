@@ -1,15 +1,16 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
+import { Fetch, Method } from "../ApiManager"
 
 export const CustomerDetails = () => {
     const { customerId } = useParams()
+
     const [customer, updateCustomer] = useState([])
-
-    const [loyalty, updateLoyalty] = useState({
-        loyaltyNumber: ""
-    })
-
+    const [loyalty, updateLoyalty] = useState({ loyaltyNumber: "" })
     const [feedback, setFeedback] = useState("")
+    
+    const customerUserIdURL = `?_expand=user&userId=${customerId}`
+    const customerIdURL = `/${customer.id}`
 
     useEffect(() => {
         if (feedback !== "") {
@@ -20,28 +21,18 @@ export const CustomerDetails = () => {
 
     useEffect(
         () => {
-            fetch(`http://localhost:8088/customers?_expand=user&userId=${customerId}`)
-                .then(response => response.json())
+            return Fetch("customers", customerUserIdURL,)
                 .then((data) => {
                     const singleCustomer = data[0]
                     updateCustomer(singleCustomer)
                 })
-        },
-        [customerId]
-    )
+        }, [customerId])
 
     const handleSaveButtonClick = (event) => {
         event.preventDefault()
 
-        return fetch(`http://localhost:8088/customers/${customer.id}`, {
-            method: "PATCH",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(loyalty)
-        })
-            .then(response => response.json)
-            .then(() => {
-                setFeedback("Customer Loyalty Number successfully saved")
-            })
+        return Fetch("customer", customerIdURL, Method("PATCH", loyalty))
+            .then(() => { setFeedback("Customer Loyalty Number successfully saved") })
     }
 
     return (
@@ -69,11 +60,11 @@ export const CustomerDetails = () => {
                 </fieldset>
                 <button onClick={(clickEvent) => handleSaveButtonClick(clickEvent)}
                     className="btn btn-primary btn-loyalty">Update</button>
-            <div className={`${feedback.includes("Error") ? "error" : "feedback"} 
+                <div className={`${feedback.includes("Error") ? "error" : "feedback"} 
             ${feedback === "" ? "invisible" : "visible"}`}>
-                {feedback}
-            </div>
-                </article>
+                    {feedback}
+                </div>
+            </article>
         </form>
     )
 }

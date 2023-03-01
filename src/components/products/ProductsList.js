@@ -1,36 +1,32 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Fetch, fetchAllPurchases, Method } from "../ApiManager";
 import "./Products.css"
 
 export const ProductsList = ({ searchTermState }) => {
     const [products, setProducts] = useState([])
     const [filteredProducts, setFiltered] = useState([])
     const [filteredProductsByPrice, productsFilteredByPrice] = useState(false)
-//    const [filteredProductsBySearch, setFilteredBySearch] = useState(false)
+    //    const [filteredProductsBySearch, setFilteredBySearch] = useState(false)
     const navigate = useNavigate()
 
     const localKandyuser = localStorage.getItem("kandy_user")
     const kandyUserObject = JSON.parse(localKandyuser)
 
-    useEffect(
-        () => {
-            const searchedProducts = products.filter(product => (
-                product.name.toLowerCase().startsWith(searchTermState.toLowerCase())))
-            setFiltered(searchedProducts)
-        },
-        [searchTermState]
-    )
+    const productSortExpandProductTypeURL = `?_sort=name&_expand=productType`
 
     useEffect(
         () => {
-            fetch(`http://localhost:8088/products?_sort=name&_expand=productType`)
-                .then(response => response.json())
-                .then((productsArray) => {
-                    setProducts(productsArray)
-                })
-        },
-        []
-    )
+            const searchedProducts = products.filter(product => (
+                product.name.toLowerCase().includes(searchTermState.toLowerCase())))
+            setFiltered(searchedProducts)
+        }, [searchTermState])
+
+    useEffect(
+        () => {
+            Fetch("products", productSortExpandProductTypeURL,)
+                .then((productsArray) => { setProducts(productsArray) })
+        }, [])
 
     useEffect(
         () => {
@@ -68,6 +64,33 @@ export const ProductsList = ({ searchTermState }) => {
         },
         [filteredProductsByPrice]
     )
+    
+    const purchaseCandy = (product) => {
+        const copy = {
+            userId: kandyUserObject.id,
+            productId: parseInt(product.id),
+            dateCompleted: new Date()
+        }
+
+        return Fetch("purchases", "", Method("POST", copy))
+            .then(() => { navigate("/products") })
+    }
+
+    const purchaseButton = (product) => {
+        if (!kandyUserObject.staff) {
+            return <button onClick={
+                (evt) => {
+                    const copy = { ...product }
+                    copy.id = evt.target.value
+                    purchaseCandy(copy)
+                }}
+                className="purchase__button"
+                value={product.id}><b>Purchase</b></button>
+        } else {
+            return ""
+        }
+
+    }
 
     return <>
         <h2 className="products__title">List of Products</h2>
@@ -84,16 +107,23 @@ export const ProductsList = ({ searchTermState }) => {
             {
                 filteredProducts.map(
                     (product) => (
-                        <section className="product" key={`product--${product.id}`} >
-                            <header><b>{product.name}</b></header>
-                            <article>Now only ${product.price}!</article>
-                            {searchTermState
-                                ? ""
-                                : <footer>In the {product.productType.name} family.</footer>
-                            }
-                        </section>
+                        <article className="product__details" key={`product--${product.id}`}>
+                            <div className="product__purchase">
+                                {
+                                    purchaseButton(product)
+                                }
+                            </div>
+                            <section className="product"  >
+                                <header><b>{product.name}</b></header>
+                                <article>Now only ${product.price}!</article>
+                                {searchTermState
+                                    ? ""
+                                    : <article>In the {product.productType.name} family.</article>
+                                }
+                            </section>
+                        </article>
                     )
-                ).sort()
+                )
             }
         </article>
     </>

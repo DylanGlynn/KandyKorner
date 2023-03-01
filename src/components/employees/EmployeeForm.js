@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { Fetch, Method } from "../ApiManager"
 
 export const EmployeeForm = () => {
     const [users, setUsers] = useState([])
@@ -16,25 +17,15 @@ export const EmployeeForm = () => {
 
     useEffect(
         () => {
-            fetch(`http://localhost:8088/users`)
-                .then(response => response.json())
-                .then((userArray) => {
-                    setUsers(userArray)
-                })
-        },
-        []
-    )
+            Fetch("users", "")
+                .then((userArray) => { setUsers(userArray) })
+        }, [])
 
     useEffect(
         () => {
-            fetch(`http://localhost:8088/locations`)
-                .then(response => response.json())
-                .then((userArray) => {
-                    setLocations(userArray)
-                })
-        },
-        []
-    )
+            Fetch("locations", "")
+                .then((userArray) => { setLocations(userArray) })
+        }, [])
 
     const handleApplicantClickEmployee = (event) => {
         event.preventDefault()
@@ -46,33 +37,19 @@ export const EmployeeForm = () => {
             locationId: parseInt(applicant.location)
         }
 
-        return fetch(`http://localhost:8088/employees`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(applicantInfoToSendToAPI)
-        })
-            .then(response => response.json())
+        return Fetch("employees", "", Method("POST", applicantInfoToSendToAPI))
             .then(() => { navigate("/employees") })
     }
 
     const handleApplicantClickUser = (event) => {
         event.preventDefault()
         const userInfoToSendToAPI = {
-            fullName: applicant.name,
+            fullName: applicant.fullName,
             email: applicant.email,
             isStaff: true
         }
 
-        return fetch(`http://localhost:8088/users`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(userInfoToSendToAPI)
-        })
-
+        return Fetch("users", "", Method("POST", userInfoToSendToAPI))
     }
 
     return (
@@ -89,7 +66,7 @@ export const EmployeeForm = () => {
                         value={applicant.fullName}
                         onChange={(evt) => {
                             const copy = { ...applicant }
-                            copy.name = evt.target.value
+                            copy.fullName = evt.target.value
                             submission(copy)
                         }} />
                 </div>

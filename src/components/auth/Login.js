@@ -1,17 +1,18 @@
 import React, { useState } from "react"
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom"
+import { Fetch, fetchAllUsers } from "../ApiManager";
 import "./Login.css"
 
 export const Login = () => {
     const [email, set] = useState("")
     const navigate = useNavigate()
+    const emailURL = `?email=${email}`
 
     const handleLogin = (e) => {
         e.preventDefault()
 
-        return fetch(`http://localhost:8088/users?email=${email}`)
-            .then(res => res.json())
+        return Fetch("users", emailURL,)
             .then(foundUsers => {
                 if (foundUsers.length === 1) {
                     const user = foundUsers[0]

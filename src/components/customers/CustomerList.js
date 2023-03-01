@@ -1,14 +1,15 @@
 import { useEffect, useState } from "react"
+import { Fetch } from "../ApiManager";
 import { Customer } from "./Customer";
 import "./Customers.css";
 
 export const CustomerList = () => {
     const [customers, setCustomers] = useState([])
+    const customerExpandUserURL = `?_expand=user`
 
     useEffect(
         () => {
-            fetch(`http://localhost:8088/customers?_expand=user`)
-                .then(response => response.json())
+            Fetch("customers", customerExpandUserURL,)
                 .then((customerArray) => {
                     setCustomers(customerArray)
                 })
