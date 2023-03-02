@@ -2299,6 +2299,12 @@
       "productId": 20,
       "dateCompleted": "2023-03-01T23:01:13.913Z",
       "id": 326
+    },
+    {
+      "userId": 2,
+      "productId": 18,
+      "dateCompleted": "2023-03-02T15:02:48.145Z",
+      "id": 327
     }
   ]
 }

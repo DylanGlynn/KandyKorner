@@ -86,8 +86,9 @@ export const ProductsList = ({ searchTermState }) => {
                         copy.id = parseInt(evt.target.value)
                         purchaseCandy(copy)
                     }}
-                className="purchase__button"
-            ><b>Purchase</b></button>
+                className="purchase__button">
+                Purchase
+            </button>
         } else {
             return ""
         }
