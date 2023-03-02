@@ -64,7 +64,7 @@ export const ProductsList = ({ searchTermState }) => {
         },
         [filteredProductsByPrice]
     )
-    
+
     const purchaseCandy = (product) => {
         const copy = {
             userId: kandyUserObject.id,
@@ -78,14 +78,16 @@ export const ProductsList = ({ searchTermState }) => {
 
     const purchaseButton = (product) => {
         if (!kandyUserObject.staff) {
-            return <button onClick={
-                (evt) => {
-                    const copy = { ...product }
-                    copy.id = evt.target.value
-                    purchaseCandy(copy)
-                }}
+            return <button
+                value={product.id}
+                onClick={
+                    (evt) => {
+                        const copy = { ...product }
+                        copy.id = parseInt(evt.target.value)
+                        purchaseCandy(copy)
+                    }}
                 className="purchase__button"
-                value={product.id}><b>Purchase</b></button>
+            ><b>Purchase</b></button>
         } else {
             return ""
         }
@@ -107,7 +109,7 @@ export const ProductsList = ({ searchTermState }) => {
             {
                 filteredProducts.map(
                     (product) => (
-                        <article className="product__details" key={`product--${product.id}`}>
+                        <article className="product__details" key={`product--${product.id}`} value={product.id}>
                             <div className="product__purchase">
                                 {
                                     purchaseButton(product)
