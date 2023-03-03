@@ -1,14 +1,16 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Fetch, fetchAllPurchases, Method } from "../ApiManager";
+import { Fetch, Method } from "../ApiManager";
 import "./Products.css"
 
 export const ProductsList = ({ searchTermState }) => {
     const [products, setProducts] = useState([])
     const [filteredProducts, setFiltered] = useState([])
     const [filteredProductsByPrice, productsFilteredByPrice] = useState(false)
-    //    const [filteredProductsBySearch, setFilteredBySearch] = useState(false)
+    const [customers, setCustomers] = useState([])
+
     const navigate = useNavigate()
+    let foundCustomerId = null
 
     const localKandyuser = localStorage.getItem("kandy_user")
     const kandyUserObject = JSON.parse(localKandyuser)
@@ -18,7 +20,7 @@ export const ProductsList = ({ searchTermState }) => {
     useEffect(
         () => {
             const searchedProducts = products.filter(product => (
-                product.name.toLowerCase().includes(searchTermState.toLowerCase())))
+                product?.name.toLowerCase().includes(searchTermState.toLowerCase())))
             setFiltered(searchedProducts)
         }, [searchTermState])
 
@@ -27,6 +29,16 @@ export const ProductsList = ({ searchTermState }) => {
             Fetch("products", productSortExpandProductTypeURL,)
                 .then((productsArray) => { setProducts(productsArray) })
         }, [])
+
+    useEffect(
+        () => {
+            Fetch("customers", "",)
+                .then((customerArray) => { setCustomers(customerArray) })
+        }, [])
+
+    for (const customer of customers) {
+        if (customer.userId === kandyUserObject.id) { foundCustomerId = customer.id }
+    }
 
     useEffect(
         () => {
@@ -68,6 +80,7 @@ export const ProductsList = ({ searchTermState }) => {
     const purchaseCandy = (product) => {
         const copy = {
             userId: kandyUserObject.id,
+            customerId: foundCustomerId,
             productId: parseInt(product.id),
             dateCompleted: new Date()
         }

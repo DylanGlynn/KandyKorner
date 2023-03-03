@@ -7,17 +7,23 @@
 }
 
 .customer {
-    display: grid;
+    display: flex;
     justify-self: left;
     margin-bottom: 5px;
     padding: 10px;
-    background-color: rgba(50,50,50,.075)
+    background-color: rgba(50, 50, 50, .075)
+}
+
+.customer__details {
+    margin-bottom: 5px;
+    padding: 10px;
+    background-color: rgba(50, 50, 50, .075)
 }
 
 .customer__link {
     color: #404040;
     text-decoration: none;
-    font-weight:700
+    font-weight: 700
 }
 
 .customer__footer {
@@ -41,4 +47,14 @@
 
 .btn-loyalty {
     height: min-content;
+}
+
+.customer__info {
+    padding-right: 5px;
+}
+
+.customer__purchaseCount {
+    text-align: center;
+    padding-left: 5px;
+    border-left: 1px solid #404040;
 }

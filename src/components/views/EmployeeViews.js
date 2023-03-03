@@ -20,14 +20,15 @@ export const EmployeeViews = () => {
 				</>
 			}>
 
-				<Route path="locations" element={ <LocationsList /> } />
-				<Route path="products" element={ <ProductsList /> } />
-				<Route path="newproductform" element= { <ProductForm />} />
-				<Route path="employeeform" element= { <EmployeeForm />} />
-				<Route path="employees" element= { <EmployeeList />} />
-				<Route path="employees/:employeeId" element= { <EmployeeDetails />} />
-				<Route path="customers" element= { <CustomerList />} />
-				<Route path="customers/:customerId" element= { <CustomerDetails />} />
+				<Route path="locations" element={<LocationsList />} />
+				<Route path="products" element={<ProductsList />} />
+				<Route path="newproductform" element={<ProductForm />} />
+				<Route path="employeeform" element={<EmployeeForm />} />
+				<Route path="employees" element={<EmployeeList />} />
+				<Route path="employees/:employeeId" element={<EmployeeDetails />} />
+				<Route path="customers" element={<CustomerList />} />
+				<Route path="users/:userId" element={<CustomerList />} />
+				<Route path="customers/:customerId" element={<CustomerDetails />} />
 			</Route>
 		</Routes>
 	)

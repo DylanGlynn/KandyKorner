@@ -8,7 +8,7 @@ export const CustomerDetails = () => {
     const [customer, updateCustomer] = useState([])
     const [loyalty, updateLoyalty] = useState({ loyaltyNumber: "" })
     const [feedback, setFeedback] = useState("")
-    
+
     const customerUserIdURL = `?_expand=user&userId=${customerId}`
     const customerIdURL = `/${customer.id}`
 
@@ -19,14 +19,13 @@ export const CustomerDetails = () => {
         }
     }, [feedback])
 
-    useEffect(
-        () => {
-            return Fetch("customers", customerUserIdURL,)
-                .then((data) => {
-                    const singleCustomer = data[0]
-                    updateCustomer(singleCustomer)
-                })
-        }, [customerId])
+    useEffect(() => {
+        Fetch("customers", customerUserIdURL,)
+            .then((data) => {
+                const singleCustomer = data[0]
+                updateCustomer(singleCustomer)
+            })
+    }, [])
 
     const handleSaveButtonClick = (event) => {
         event.preventDefault()
@@ -36,7 +35,7 @@ export const CustomerDetails = () => {
     }
 
     return (
-        <form className="customer">
+        <form className="customer__details">
             <header className="customer__header">Name: {customer.user?.fullName}</header>
             <div>Email: {customer?.user?.email}</div>
             <article className="loyalty__update">
